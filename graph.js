@@ -115,3 +115,113 @@ class Graph {
 }
 
 module.exports = {Graph, Node}
+
+
+// HackerRank shortest reach BFS:
+// from collections import deque 
+// def bfs(n, m, edges, s):
+//     # Write your code here
+//     graphMap = {i:[] for i in range(n+1)}
+//     for u, v in edges:
+//         graphMap[u].append(v)
+//         graphMap[v].append(u)
+    
+//     # assigning distance as -1 for default, including start node(will remove it later)
+//     distances = [-1] * n
+//     # setting start node distance as 0, they are indexed base 0, distance[s-1] representing s node
+//     distances[s-1] = 0 
+    
+//     q = deque([s])
+    
+//     while q:
+//         currNode = q.popleft()
+//         for neighbor in graphMap[currNode]:
+//             # this means the node has not been visited yet
+//             if distances[neighbor-1] == -1:
+//                 distances[neighbor-1] = distances[currNode-1] + 6
+//                 q.append(neighbor)
+//     # after reaching all of the neighbor, remove start node distance
+//     distances.pop(s-1)
+//     return distances
+
+
+
+
+// HackerRank Roads and Libraries:s
+// # The function is expected to return a LONG_INTEGER.
+// # The function accepts following parameters:
+// #  1. INTEGER n
+// #  2. INTEGER c_lib
+// #  3. INTEGER c_road
+// #  4. 2D_INTEGER_ARRAY cities
+// #
+
+// def roadsAndLibraries(n, c_lib, c_road, cities):
+//     # Write your code here
+    
+//     graphMap = {i:[] for i in range(1, n+1)}
+//     for u, v in cities:
+//         graphMap[u].append(v)
+//         graphMap[v].append(u)
+        
+//     visited = set()
+//     cost = 0
+    
+//     def dfs(node):
+//         num_of_cities=1
+//         visited.add(node)
+//         for city in graphMap[node]:
+//             if city not in visited:
+//                 num_of_cities += dfs(city)
+//         return num_of_cities
+    
+    
+//     for node in range(1, n+1):
+//         # making sure every city in every sub graph has been visited and num of citites calculated
+//         if node not in visited:
+//             num_of_cities = dfs(node)
+//             # when c_lib < c_road, just library to every city
+            
+//             cost1 = num_of_cities * c_lib
+                
+//             # cost of roads for cities and 1 library for each sub graph
+//             cost2 = (num_of_cities-1) * c_road + c_lib
+//             cost += min(cost1, cost2)
+            
+    
+//     return cost
+        
+
+
+// HackerRank Even Tree:
+
+// # Complete the evenForest function below.
+// def evenForest(t_nodes, t_edges, t_from, t_to):
+    
+//     graph_map = {i:[] for i in range(1,t_nodes+1)}
+//     for start, end in zip(t_from, t_to):
+//         graph_map[start].append(end)
+//         graph_map[end].append(start)
+        
+//     visited = set()
+//     removed_edges = 0
+    
+//     def dfs(node, visited):
+//         nonlocal removed_edges
+//         nodes = 1
+//         visited.add(node)
+//         for child in graph_map[node]:
+//             if child not in visited:
+//                 nodes += dfs(child, visited)
+//         if nodes % 2 == 0 and node != 1:
+//             removed_edges += 1 
+//         return nodes
+    
+//     dfs(1, set())
+//     return removed_edges
+    
+// You are given a tree (a simple connected graph with no cycles).
+
+// Find the maximum number of edges you can remove from the tree to get a forest such that each connected component of the forest contains an even number of nodes.
+
+// As an example, the following tree with  nodes can be cut at most  time to create an even forest.
