@@ -203,21 +203,20 @@ module.exports = {Graph, Node}
 //         graph_map[start].append(end)
 //         graph_map[end].append(start)
         
-//     visited = set()
 //     removed_edges = 0
-    
-//     def dfs(node, visited):
+//     visited = set()
+//     def dfs(node):
 //         nonlocal removed_edges
 //         nodes = 1
 //         visited.add(node)
 //         for child in graph_map[node]:
 //             if child not in visited:
-//                 nodes += dfs(child, visited)
+//                 nodes += dfs(child)
 //         if nodes % 2 == 0 and node != 1:
 //             removed_edges += 1 
 //         return nodes
     
-//     dfs(1, set())
+//     dfs(1)
 //     return removed_edges
     
 // You are given a tree (a simple connected graph with no cycles).
